@@ -115,7 +115,7 @@ def verify_decode_jwt(token):
         try:
             payload = jwt.decode(
                 token,
-                rsa_key
+                rsa_key,
                 algorithms=ALGORITHMS,
                 audience=API_AUDIENCE,
                 issuer='https://' + AUTH0_DOMAIN + '/'
