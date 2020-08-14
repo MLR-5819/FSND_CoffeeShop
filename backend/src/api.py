@@ -74,9 +74,9 @@ def drinks_detail(token):
 @app.route('/drinks', methods=['POST'])
 @requires_auth('post:drinks')
 def create_drink(token):
-    form = request.json()
-    drink_title = form.get['title']
-    drink_recipe = json.dumps(form.get['recipe'])
+    form = request.get_json()
+    drink_title = form.get('title')
+    drink_recipe = json.dumps(form.get('recipe'))
 
     try:
         drink = Drink(
@@ -107,9 +107,9 @@ def create_drink(token):
 @app.route('/drinks/<int:id>', methods=['PATCH'])
 @requires_auth('patch:drinks')
 def update_drink(token, id):
-    form = request.json()
-    drink_title = form.get['title']
-    drink_recipe = json.dumps(form.get['recipe'])
+    form = request.get_json()
+    drink_title = form.get('title')
+    drink_recipe = json.dumps(form.get('recipe'))
 
     try:
         drink = Drink.query.filter(Drink.id == id).one_or_none()
