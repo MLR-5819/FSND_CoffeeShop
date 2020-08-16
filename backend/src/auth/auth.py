@@ -73,9 +73,9 @@ def check_permissions(permission, payload):
     
     if permission not in payload['permissions']:
         raise AuthError({
-            'code': 'forbidden',
+            'code': 'unauthorized',
             'description': 'Account missing necessary permissions for this action.'
-        }, 403)
+        }, 401)
     
     return True
 
@@ -144,7 +144,7 @@ def verify_decode_jwt(token):
     raise AuthError({
         'code': 'invalid_header',
         'description': 'Unable to find the appropriate key.'
-    }, 400)
+    }, 401)
         
 # DONE * already in original source code from Udacity
 # implement @requires_auth(permission) decorator method
