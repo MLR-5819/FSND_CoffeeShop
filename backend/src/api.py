@@ -123,7 +123,7 @@ def update_drink(token, id):
 
         return jsonify({ 
             "success": True,
-            "drinks": drink.long()
+            "drinks": [drink.long()]
         }), 200
         
     except:
